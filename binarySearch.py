@@ -53,14 +53,18 @@ def binarySearch1(nums, target):
             print("Found target in : %s" % mid)
             return mid
         elif nums[mid] < target:
+            print()
+            print("nums[mid](%s) < target(%s)" % (nums[mid], target))
             left = mid + 1
         else:
+            print()
+            print("nums[mid](%s) > target(%s)" % (nums[mid], target))
             right = mid - 1
         counter += 1
+        print("next iteration left(%s) right(%s)" % (left, right))
     print()
     print("Hit the exit condition which is left(%s) > right(%s)" % (left, right))
     print("Didn't find the target")
-    # End Condition: left > right
     return -1
 
 def binarySearch2(nums, target):
@@ -72,7 +76,7 @@ def binarySearch2(nums, target):
     if len(nums) == 0:
         return -1
     counter = 1
-    left, right = 0, len(nums)
+    left, right = 0, len(nums) - 1
     while left < right:
         mid = (left + right) // 2
         printOutIteration(nums, left, right, mid, counter)
@@ -81,16 +85,20 @@ def binarySearch2(nums, target):
             print("Found target in : %s" % mid)
             return mid
         elif nums[mid] < target:
+            print()
+            print("nums[mid](%s) < target(%s)" % (nums[mid], target))
             left = mid + 1
         else:
+            print()
+            print("nums[mid](%s) > target(%s)" % (nums[mid], target))
             right = mid
         counter += 1
-
+        print("next iteration left(%s) right(%s)" % (left, right))
     print()
-    print("Hit the exit condition which is left(%s) >= right(%s)" % (left, right))
-    # Post-processing:
-    # End Condition: left == right
+    print("Hit the exit condition which is left(%s) == right(%s)" % (left, right))
+    print("Post-processing:")
     if left != len(nums) and nums[left] == target:
+        print("found target(%s) in num[left] which is nums[%s]== target(%s)" % (target, left, target))
         return left
     print("Didn't find the target")
     return -1
@@ -113,22 +121,29 @@ def binarySearch3(nums, target):
             print("Found target in : %s" % mid)
             return mid
         elif nums[mid] < target:
+            print()
+            print("nums[mid](%s) < target(%s)" % (nums[mid], target))
             left = mid
         else:
+            print()
+            print("nums[mid](%s) > target(%s)" % (nums[mid], target))
             right = mid
         counter += 1
-
+        print("next iteration left(%s) right(%s)" % (left, right))
     print()
     print("Hit the exit condition which is left(%s) + 1 >= right(%s)" % (left, right))
-    # Post-processing:
-    # End Condition: left + 1 == right
-    if nums[left] == target: return left
-    if nums[right] == target: return right
+    print("Post-processing:")
+    if nums[left] == target:
+        print("found target(%s) in  num[left] which is nums[%s]== target(%s)" % (target, left, target))
+        return left
+    if nums[right] == target:
+        print("found target(%s) in  num[right] which is nums[%s] == target(%s)" % (target, right, target))
+        return right
     print("Didn't find the target")
     return -1
 
-nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-target = 1
+nums = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+target = 8
 
 print('***************Template 1****************')
 print("Look for target number %s" % target)

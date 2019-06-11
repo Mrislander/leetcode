@@ -113,7 +113,8 @@ def binarySearch3(nums, target):
         return -1
     counter = 1
     left, right = 0, len(nums) - 1
-    while left + 1 < right:
+    window = 1
+    while left + window < right:
         mid = (left + right) // 2
         printOutIteration(nums, left, right, mid, counter)
         if nums[mid] == target:
@@ -131,7 +132,7 @@ def binarySearch3(nums, target):
         counter += 1
         print("next iteration left(%s) right(%s)" % (left, right))
     print()
-    print("Hit the exit condition which is left(%s) + 1 >= right(%s)" % (left, right))
+    print("Hit the exit condition which is left(%s) + width(%s) >= right(%s)" % (left, window, right))
     print("Post-processing:")
     if nums[left] == target:
         print("found target(%s) in  num[left] which is nums[%s]== target(%s)" % (target, left, target))
@@ -143,7 +144,7 @@ def binarySearch3(nums, target):
     return -1
 
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-target = 8
+target = 0
 
 print('***************Template 1****************')
 print("Look for target number %s" % target)
